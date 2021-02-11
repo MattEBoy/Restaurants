@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Restaurant Suggestion Entry";
+}
+
+@model Restaurants.Models.RestaurantSuggestion
+
+@*apply bootstrap to div*@
+<div class="text-center">
+    <h1 class="display-1">Restaurant Suggestion Entry</h1>
+    @*this is a form, people enter information into forms*@
+    <form asp-action="Entry" method="post" class="form-control">
+        <label asp-for="RestaurantName">Restaurant Name</label>
+        <input asp-for="RestaurantName" /><br /> <br />
+        <label asp-for="FavDish">Favorite Dish</label>
+        <input asp-for="FavDish" /><br /> <br />
+        <label asp-for="PersonName">Person Name</label>
+        <input asp-for="PersonName" /><br /> <br />
+        <label asp-for="RestaurantPhone">Restaurant Phone</label>
+        <input asp-for="RestaurantPhone" /><br /> <br />
+        <button type="submit">Enter Restaurant</button><br /> <br />
+        <div asp-validation-summary="All"></div>
+    </form>
+</div>

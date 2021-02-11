@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Suggestions";
+}
+
+
+@model IEnumerable<Restaurants.Models.RestaurantSuggestion> 
+
+<div class="text-center">
+    <h1 class="display-1">Suggestions</h1>
+    @*use bootstrap to make nice table*@
+    <table class="table-striped tbody tr:nth-of-type(odd)">
+        <thead class="thead-dark">
+            <tr>
+                <td class="table-sm">Restaurant Name</td>
+                <td class="table-sm">Person Name</td>
+                <td class="table-sm">Favorite Dish</td>
+                <td class="table-sm">Restaurant Phone</td>
+            </tr>
+        </thead>
+        @*iterate through the list*@
+        @foreach (Restaurants.Models.RestaurantSuggestion r in Model)
+        {
+            <tr>
+                <td class="table-sm">@r.RestaurantName</td>
+                <td class="table-sm">@r.PersonName</td>
+                <td class="table-sm">@r.FavDish</td>
+                <td class="table-sm">@r.RestaurantPhone</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -3,16 +3,50 @@
 }
 
 
-@model IEnumerable<Restaurant> 
+@model IEnumerable<Restaurant>
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
-    <ul>
-        @foreach (Restaurant r in Model)
+    <h1 class="display-1">Welcome</h1>
+    @*table with boostrap*@
+    <table class="table-striped tbody tr:nth-of-type(odd)">
+        <thead class="thead-dark">
+            <tr>
+                <td class="table-sm">Rank</td>
+                <td class="table-sm">Name</td>
+                <td class="table-sm">Phone Number</td>
+                <td class="table-sm">Address</td>
+                <td class="table-sm">Favorite Dish</td>
+                <td class="table-sm">Link</td>
+            </tr>
+        </thead>
+        @*iterate through the array*@
+        @foreach (Restaurants.Models.Restaurant r in Model)
         {
-            <li>r.RestaurantName</li>
+            <tr>
+                <td class="table-sm">#@r.Rank</td>
+                <td class="table-sm">@r.RestaurantName</td>
+                <td class="table-sm">@r.RestaurantPhone</td>
+                <td class="table-sm">@r.Address</td>
+                @if (r.FavDish is null)
+                {
+                    <td class="table-sm">It's all tasty!</td>
+                }
+                else
+                {
+                    <td class="table-sm">@r.FavDish</td>
+                }
+                <td class="table-sm">
+                    @*This is just adding an a tag with an href if the website is there. If it is equal to Coming Soon, no href or a tag is added*@
+                    @if (r.Link == "Coming soon.")
+                    {
+                        @r.Link
+                    }
+                    else
+                    {
+                        <a href=@r.Link target="_blank">@r.Link</a>
+                    }
+                </td>
+            </tr>
         }
-    </ul>
+    </table>
 </div>
